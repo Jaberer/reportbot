@@ -1,107 +1,10 @@
 /**
- * Taken from https://github.com/clocklimited/BasicExpressSite
- */
-/*
- * Import nib
+ * Modified from https://github.com/clocklimited/BasicExpressSite
  */
 /*
  * Grab a custom font from Google
  */
 @import url("http://fonts.googleapis.com/css?family=Quicksand");
-/*
- * Nib provides a CSS reset
- */
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-family: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-body {
-  line-height: 1;
-  color: #000;
-  background: #fff;
-}
-ol,
-ul {
-  list-style: none;
-}
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  vertical-align: middle;
-}
-caption,
-th,
-td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-a img {
-  border: none;
-}
 /*
  * Store the main color and
  * background color as variables
@@ -132,21 +35,16 @@ header {
 }
 .main-content {
   float: left;
-  width: 300px;
+  width: auto;
 }
 .main-content p {
   margin-bottom: 20px;
 }
 .sidebar {
   float: left;
-  width: 200px;
+  width: auto;
 }
 .sidebar .widget {
-/*
-     * Note the lack of vendor
-     * prefixes here. Nib will
-     * add them for us
-     */
   -webkit-border-radius: 3px;
   border-radius: 3px;
   border: 1px solid #ccc;
