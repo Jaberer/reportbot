@@ -14,9 +14,9 @@
     <header>
         <h1>Squad</h1>
     </header>
+    <div id="container"></div>
     <div class="container">
         <div class="main-content">
-            <div id="container"></div>
             <p>A small peak at what we've been up to...</p>
             <p>The graphic above represents the number of times each person has
                 been "reported" over the past couple of days</p>
@@ -177,6 +177,9 @@
     </script>
     -->
     <script>
+        const People = Parse.Object.extend('People');
+        const LAST_UPDATED = "LAST_UPDATED";
+        $('body').data(LAST_UPDATED, 0);
         $(function () {
             Highcharts.setOptions({
                 global : {
@@ -200,7 +203,6 @@
                         }
                     }
                 },
-
                 rangeSelector: {
                     buttons: [{
                         count: 1,
@@ -217,32 +219,41 @@
                     inputEnabled: false,
                     selected: 0
                 },
-
+                credits: {
+                    enabled: false
+                },
                 title : {
                     text : 'Live random data'
                 },
-
                 exporting: {
                     enabled: false
                 },
-
                 series : [{
                     name : 'Random data',
                     data : (function () {
                         // generate an array of random data
                         var data = [], time = (new Date()).getTime(), i;
-
-                        for (i = -999; i <= 0; i += 1) {
-                            data.push([
-                                time + i * 1000,
-                                Math.round(Math.random() * 100)
-                            ]);
-                        }
+                        var aneeshQuery = new Parse.Query(People);
+                        aneeshQuery.equalTo('name', 'aneesh');
+                        aneeshQuery.include('reportsPerDay');
+                        aneeshQuery.find({
+                            success: function (people) {
+                                if(people.length > 0) {
+                                    console.log(people[0].get('reportsPerDay'));
+                                    var reportsPerDay = people[0].get('reportsPerDay');
+                                    for(var i = 0; i < reportsPerDay.length; i++) {
+                                        var x = reportsPerDay[i].date;
+                                        var y = -reportsPerDay[i].reports;
+                                        console.log(x + " " + y);
+                                        data.push([x, y]);
+                                    }
+                                }
+                            }
+                        });
                         return data;
                     }())
                 }]
             });
-
         });
     </script>
     </body>

@@ -1,24 +1,24 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     reportbot = require('./reportbot'),
-    stylus = require('stylus'),
-    nib = require('nib'),
+    //stylus = require('stylus'),
+    //nib = require('nib'),
     path = require('path');
 
 var app = express();
-function compile(str, path) {
-    return stylus(str)
-        .set('filename', path)
-        .use(nib());
-}
+//function compile(str, path) {
+//    return stylus(str)
+//        .set('filename', path)
+//        .use(nib());
+//}
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-app.use(stylus.middleware({
-        src: __dirname + '/public',
-        compile: compile
-    }
-));
+//app.set('views', __dirname + '/views');
+//app.set('view engine', 'jade');
+//app.use(stylus.middleware({
+//        src: __dirname + '/public',
+//        compile: compile
+//    }
+//));
 app.use(express.static(__dirname + '/public'));
 
 // body parser middleware
